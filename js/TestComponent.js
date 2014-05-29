@@ -1,5 +1,5 @@
 var TestComponent = function(alias) {
-    this._element = document.createElement("div");
+    this._element = document.createElement("span");
 
     this._label = document.createElement("span");
     this._label.innerText = alias + " ";

@@ -8,12 +8,16 @@ var Frame = function(elem, alias) {
 
     this._alias = alias;
     this._component = null;
+
+    this.shown = false;
 };
 
 Frame.prototype.open = function() {
 
+    this.shown = true;
+
     this._component = new TestComponent(this._alias);
-    this._element.appendChild(this._component.getElement());
+    this._element.insertBefore(this._component.getElement(), this._element.firstChild);
 
     if(this._component.onOpen && this._updateSize()) {
         this._component.onOpen(this._width, this._height);
@@ -21,14 +25,34 @@ Frame.prototype.open = function() {
 };
 
 Frame.prototype.show = function() {
-    if(this._component.onResize && this._updateSize()) {
-        this._component.onResize(this._width, this._height);
+
+    this._element.style.display ="";
+
+    if(!this._component) {
+        this.open();
+    } else {
+        this.shown = true;
+        if(this._component.onShow) {
+            this._updateSize();
+            this._component.onShow(this._width, this._height);
+        }
     }
+
 };
 
 Frame.prototype.hide = function() {
-    if(this._component.onHide) {
-        this._component.onHide();
+    this._element.style.display = "none";
+    if(this.shown) {
+        this.shown = false;
+        if(this._component.onHide) {
+            this._component.onHide();
+        }
+    }
+};
+
+Frame.prototype.close = function() {
+    if(this._component.onClose) {
+        this._component.onClose();
     }
 };
 

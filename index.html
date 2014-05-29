@@ -15,23 +15,27 @@
 <body>
 
     <div class="header">
-        <div class="notifications" data-role="caplinx.notifications">
+        <div id="notifications" data-role="caplinx.notifications">
         </div>
     </div>
 
     <div class="main">
 
-        <span class="clientselector" data-role="caplinx.client-selector">
-            <button class="collapse" onclick="(document.body.className.indexOf('collapsed') > -1) ? document.body.className = '' :  document.body.className = 'collapsed'; panelManager.resize();">Collapse</button>
+        <span id="clientselector" data-role="caplinx.client-selector">
+            <button onclick="(document.body.className.indexOf('collapsed') > -1) ? document.body.className = '' :  document.body.className = 'collapsed'; panelManager.resize();">Collapse</button>
         </span>
 
-        <span class="menu" data-role="caplinx.client-menu">
+        <span id="menu" data-role="caplinx.client-menu">
+            <button onclick="panelManager.show('info')">Info</button>
+            <button onclick="panelManager.show('ticket')">Ticket</button>
+            <button onclick="panelManager.show('blotter')">Blotter</button>
+            <button onclick="panelManager.show('other')">Other</button>
         </span>
 
-        <span class="info" data-role="caplinx.client-info" data-group="stage"></span>
-        <span class="ticket" data-role="caplinx.client-ticket" data-group="stage"></span>
-        <span class="blotter" data-role="caplinx.client-blotter" data-group="stage"></span>
-        <span class="other" data-role="caplinx.client-other" data-group="stage"></span>
+        <span id="info" data-role="caplinx.client-info" data-role-group="stage"></span>
+        <span id="ticket" data-role="caplinx.client-ticket" data-role-group="stage" data-role-group-default="true"></span>
+        <span id="blotter" data-role="caplinx.client-blotter" data-role-group="stage"></span>
+        <span id="other" data-role="caplinx.client-other" data-role-group="stage"></span>
     </div>
 
 </body>
