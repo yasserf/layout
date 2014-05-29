@@ -1,0 +1,39 @@
+.header {
+  width: 100%;
+  height: 5%;
+  background-color: red;
+  min-height: 30px; }
+
+.main {
+  width: 100%;
+  height: 95%; }
+
+.clientselector {
+  transition: width 0.2s;
+  height: 100%;
+  width: 15%;
+  background-color: purple;
+  float: left;
+}
+
+.menu {
+  height: 100%;
+  width: 10%;
+  background-color: grey;
+  float: left; }
+
+.ticket {
+  transition: width 0.2s;
+  height: 100%;
+  width: 75%;
+  float: left;
+  background-color: green;
+}
+
+.collapsed .clientselector {
+  width: 3%;
+}
+
+.collapsed .ticket {
+  width: 87%;
+}

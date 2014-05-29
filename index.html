@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <link  rel="stylesheet" type="text/css" href="layout.css"/>
+
+    <script>
+        var head = document.getElementsByTagName('head')[0];
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'App.js?v=' + (Math.random()*100000).toFixed(0);
+        head.appendChild(script);
+    </script>
+
+</head>
+<body>
+
+    <div class="header">
+        <div class="notifications" data-role="caplinx.notifications">
+        </div>
+    </div>
+
+    <div class="main">
+
+        <span class="clientselector" data-role="caplinx.client-selector">
+            <button class="collapse" onclick="(document.body.className.indexOf('collapsed') > -1) ? document.body.className = '' :  document.body.className = 'collapsed'; panelManager.resize();">Collapse</button>
+        </span>
+
+        <span class="menu" data-role="caplinx.client-menu">
+        </span>
+
+        <span class="info" data-role="caplinx.client-info" data-group="stage"></span>
+        <span class="ticket" data-role="caplinx.client-ticket" data-group="stage"></span>
+        <span class="blotter" data-role="caplinx.client-blotter" data-group="stage"></span>
+        <span class="other" data-role="caplinx.client-other" data-group="stage"></span>
+    </div>
+
+</body>
+</html>
