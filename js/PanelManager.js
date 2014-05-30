@@ -1,4 +1,5 @@
 var Frame = require("./Frame");
+var Router = require("./Router");
 
 var PanelManager = function() {
 
@@ -10,6 +11,8 @@ var PanelManager = function() {
     this._doesNotExist = this._doesNotExist.bind(this);
     this._enhanceElement = this._enhanceElement.bind(this);
     this.resize = this.resize.bind(this);
+
+    this._router = new Router(this);
 
     window.addEventListener('resize', this.resize);
 };
