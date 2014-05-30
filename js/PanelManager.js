@@ -28,6 +28,7 @@ PanelManager.prototype.show = function(id) {
            }
         });
     }
+    this._router.setRoute(id);
 };
 
 PanelManager.prototype.hide = function(id) {
