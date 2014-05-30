@@ -59,7 +59,6 @@ PanelManager.prototype._enhanceElement = function(elem) {
     var elemGroup = elem.getAttribute("data-role-group");
     var isDefault = elem.getAttribute("data-role-group-default");
     var id = elem.getAttribute("id");
-    debugger
     var frame = new Frame(elem, dataRole);
 
     if(elemGroup) {
@@ -67,7 +66,6 @@ PanelManager.prototype._enhanceElement = function(elem) {
         this._frameGroups[elemGroup].push({element:elem, frame:frame, id:id});
     }
 
-    debugger
     if(elemGroup && isDefault !== "true") {
         frame.hide();
     } else {
