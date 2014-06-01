@@ -1,0 +1,59 @@
+<html>
+
+<head>
+    <link  rel="stylesheet" type="text/css" href="layout.css"/>
+
+    <script>
+        var head = document.getElementsByTagName('head')[0];
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'App.js?v=' + (Math.random()*100000).toFixed(0);
+        head.appendChild(script);
+    </script>
+
+</head>
+<body>
+
+    <div class="header">
+        <div id="notifications" data-role="caplinx.notifications">
+        </div>
+    </div>
+
+    <div class="main">
+
+        <span id="clientselector" data-role="caplinx.client-selector">
+            <button onclick="(document.body.className.indexOf('collapsed') > -1) ? document.body.className = '' :  document.body.className = 'collapsed'; FrameManager.resize();">Collapse</button>
+        </span>
+
+        <span>
+
+            <span id="clientheader" data-role="caplinx.client-header">
+            </span>
+
+            <span id="client">
+
+                <span id="menu" data-role="caplinx.client-menu">
+                    <button onclick="FrameManager.get('panel').show('info')">Info</button>
+                    <button onclick="FrameManager.get('panel').show('ticket')">Ticket</button>
+                    <button onclick="FrameManager.get('panel').show('blotter')">Blotter</button>
+                    <button onclick="FrameManager.get('panel').show('other')">Other</button>
+                </span>
+
+                <span id="stage" data-role="MultiFrame">
+                    <span id="info" data-role-id="info" data-role="caplinx.client-info"></span>
+                    <span id="trade" data-role-id="trade" data-role="SplitFrame">
+                        <span id="ticket" data-role-id="ticket" data-role="caplinx.ticket"></span>
+                        <span id="stuff" data-role-id="stuff" data-role="caplinx.stuff"></span>
+                    </span>
+                    <span id="blotter" data-role-id="blotter" data-role="caplinx.client-blotter"></span>
+                    <span id="other" data-role-id="other" data-role="caplinx.client-other"></span>
+                </span>
+
+                </span>
+
+        </span>
+
+    </div>
+
+</body>
+</html>

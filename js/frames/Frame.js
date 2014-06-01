@@ -1,12 +1,10 @@
-var TestComponent = require("./TestComponent");
-
-var Frame = function(elem, alias) {
+var Frame = function(elem, createComponent) {
     this._element = elem;
 
     this._width = null;
     this._height = null;
 
-    this._alias = alias;
+    this._createComponent = createComponent;
     this._component = null;
 
     this.shown = false;
@@ -16,7 +14,7 @@ Frame.prototype.open = function() {
 
     this.shown = true;
 
-    this._component = new TestComponent(this._alias);
+    this._component = this._createComponent();
     this._element.insertBefore(this._component.getElement(), this._element.firstChild);
 
     if(this._component.onOpen && this._updateSize()) {

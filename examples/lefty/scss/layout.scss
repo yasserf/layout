@@ -16,21 +16,30 @@
   float: left;
 }
 
+#client {
+  height: 100%;
+  width: 85%;
+  float: left;
+}
+
+#clientheader {
+
+}
+
 #menu {
   height: 100%;
   width: 10%;
   background-color: grey;
   float: left; }
 
-[data-role-group="stage"] {
+#stage > span  {
   transition: width 0.2s;
   height: 100%;
   width: 75%;
   float: left;
-  background-color: green;
 }
 
-.collapsed [data-role-group="stage"] {
+.collapsed #stage > span {
   width: 87%;
 }
 

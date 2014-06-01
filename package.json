@@ -9,10 +9,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "connect": "^3.0.0",
+    "connect": "^2.18.0",
     "gulp": "^3.6.2",
     "gulp-browserify": "^0.5.0",
+    "gulp-concat": "^2.2.0",
+    "gulp-jshint": "^1.6.1",
+    "gulp-rename": "^1.2.0",
     "gulp-sass": "^0.7.1",
-    "http": "0.0.0"
+    "gulp-uglify": "^0.3.0"
   }
 }
