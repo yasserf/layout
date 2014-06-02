@@ -3,14 +3,18 @@ var gulp = require('gulp');
 var browserify = require('gulp-browserify');
 var sass = require('gulp-sass');
 var rename = require('gulp-rename');
+var uglify = require('gulp-uglify');
 
 gulp.task('scripts', function() {
     gulp.src('js/FrameManager.js', { read: false } )
         .pipe(browserify({
             debug : true,
-            standalone: 'beep-boop'
+            standalone: 'leftylayout'
         }))
         .pipe(rename("leftylayout.js"))
+        .pipe(gulp.dest('dist'))
+        .pipe(uglify())
+        .pipe(rename("leftylayout.min.js"))
         .pipe(gulp.dest('dist'));
 });
 
