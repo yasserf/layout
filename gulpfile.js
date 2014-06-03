@@ -13,9 +13,11 @@ gulp.task('scripts', function() {
         }))
         .pipe(rename("leftylayout.js"))
         .pipe(gulp.dest('dist'))
-        .pipe(uglify())
-        .pipe(rename("leftylayout.min.js"))
-        .pipe(gulp.dest('dist'));
+        .pipe(uglify({
+
+        }))
+        //.pipe(rename("leftylayout.min.js"))
+        //.pipe(gulp.dest('dist'));
 });
 
 // Watch Files For Changes

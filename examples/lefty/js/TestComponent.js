@@ -20,14 +20,14 @@ TestComponent.prototype.getElement = function() {
 
 TestComponent.prototype.onOpen = function(width, height) {
     this._lastEvent.innerText = "onOpen ";
-    this._height.innerText = "height: " + height;
-    this._width.innerText = "width: " + width;
+    height && (this._height.innerText = "height: " + height);
+    width && (this._width.innerText = "width: " + width);
 };
 
 TestComponent.prototype.onShow = function(width, height) {
     this._lastEvent.innerText = "onShow ";
-    this._height.innerText = "height: " + height;
-    this._width.innerText = "width: " + width;
+    height && (this._height.innerText = "height: " + height);
+    width && (this._width.innerText = "width: " + width);
 };
 
 TestComponent.prototype.onHide = function() {
@@ -36,8 +36,8 @@ TestComponent.prototype.onHide = function() {
 
 TestComponent.prototype.onResize = function(width, height) {
     this._lastEvent.innerText = "onResize ";
-    this._height.innerText = "height: " + height;
-    this._width.innerText = "width: " + width;
+    height && (this._height.innerText = "height: " + height);
+    width && (this._width.innerText = "width: " + width);
 };
 
 module.exports = TestComponent;

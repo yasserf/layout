@@ -6,39 +6,39 @@ module.exports = (function() {
     var MultiFrame = function(elem, createComponent) {
         this._createComponent = createComponent;
 
-
         var elementsToEnhance = extractRoles(elem.children);
         this._elementsToEnhance = this._assignToID(elementsToEnhance);
-        this._hideNonDefaultElements();
+
+        for(var elementID in this._elementsToEnhance) {
+            this._elementsToEnhance[elementID].style.display = "none";
+        }
 
         this._frames = {};
 
         this._currentFrameID = null;
         this._currentFrame = null;
-
-        window.xxx = this;
-
-
     };
 
     MultiFrame.prototype.open = function() {
     };
 
-    MultiFrame.prototype.show = function(id) {
+    MultiFrame.prototype.get = function(id) {
+        return this._frames[id];
+    };
 
-        debugger
+    MultiFrame.prototype.show = function(id) {
 
         if(this._currentFrameID === id) {
             return;
         } else if(this._currentFrame) {
             this._currentFrame.hide();
-            this._elementsToEnhance[this._currentFrameID].style.display = "none";
+            this._frames[this._currentFrameID].hide();
         }
 
         if(this._frames[id]) {
             this._frames[id].show();
         } else if(this._elementsToEnhance[id]){
-            this._frames[id] = require("./../ElementEnhancer")(this._elementsToEnhance[id], this._createComponent.bind(this, this._elementsToEnhance[id], this._createComponent));
+            this._frames[id] = require("./../ElementEnhancer")(this._elementsToEnhance[id], this._createComponent);
             this._frames[id].open();
             delete this._elementsToEnhance[id];
         } else {
@@ -47,7 +47,6 @@ module.exports = (function() {
 
         this._currentFrameID = id;
         this._currentFrame = this._frames[id];
-        this._frames[this._currentFrameID].style.display = "";
     };
 
     MultiFrame.prototype.hide = function() {
@@ -61,9 +60,9 @@ module.exports = (function() {
     };
 
     MultiFrame.prototype.resize = function() {
-        this._frames.forEach(function (frame) {
-            frame.resize();
-        });
+        if(this._currentFrame) {
+            this._currentFrame.resize();
+        }
     };
 
     MultiFrame.prototype._assignToID = function(elements) {
@@ -78,12 +77,6 @@ module.exports = (function() {
         });
 
         return result;
-    };
-
-    MultiFrame.prototype._hideNonDefaultElements = function() {
-        for(var elementID in this._elementsToEnhance) {
-            this._elementsToEnhance[elementID].style.display = "none";
-        }
     };
 
     return MultiFrame;

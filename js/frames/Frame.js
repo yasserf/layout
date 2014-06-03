@@ -1,5 +1,8 @@
+var listenToResize = require("../FrameResize");
+
 var Frame = function(elem, createComponent) {
     this._element = elem;
+    this._options = JSON.parse(elem.getAttribute("data-role-options") || "{}");
 
     this._width = null;
     this._height = null;
@@ -8,16 +11,23 @@ var Frame = function(elem, createComponent) {
     this._component = null;
 
     this.shown = false;
+
+    if(this._options.listenToResize) {
+        listenToResize(this);
+    }
 };
 
 Frame.prototype.open = function() {
+
+    this._element.style.display ="";
 
     this.shown = true;
 
     this._component = this._createComponent();
     this._element.insertBefore(this._component.getElement(), this._element.firstChild);
 
-    if(this._component.onOpen && this._updateSize()) {
+    if(this._component.onOpen) {
+        this._updateSize();
         this._component.onOpen(this._width, this._height);
     }
 };
@@ -55,20 +65,25 @@ Frame.prototype.close = function() {
 };
 
 Frame.prototype.resize = function() {
-    if(this._component.onResize && this._updateSize()) {
+    if(this.shown && this._component.onResize && this._updateSize()) {
         this._component.onResize(this._width, this._height);
     }
 };
 
 Frame.prototype._updateSize = function() {
-    var hasResized = false;
-    var width = this._element.offsetWidth;
-    var height = this._element.offsetHeight;
 
-    if(width !== this._width || height !== this._height) {
-        this._width = width;
-        this._height = height;
-        hasResized = true;
+    var hasResized = false;
+
+    if(this.shown && this._options.listenToResize) {
+        var width = this._element.offsetWidth;
+        var height = this._element.offsetHeight;
+
+        if(width !== this._width || height !== this._height) {
+            this._width = width;
+            this._height = height;
+            hasResized = true;
+        }
+
     }
 
     return hasResized;

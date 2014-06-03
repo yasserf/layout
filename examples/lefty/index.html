@@ -9,6 +9,16 @@
         script.type = 'text/javascript';
         script.src = 'App.js?v=' + (Math.random()*100000).toFixed(0);
         head.appendChild(script);
+
+        function toggleCollapsed() {
+            var mainElement = document.body.querySelector(".main");
+            (mainElement.className.indexOf('collapsed') > -1) ? mainElement.className = 'main' :  mainElement.className = 'main collapsed';
+            FrameManager.get("main").resize();
+        }
+
+        function switchPanel(panelName) {
+            FrameManager.get("main").get("stage").show(panelName);
+        }
     </script>
 
 </head>
@@ -19,38 +29,36 @@
         </div>
     </div>
 
-    <div class="main">
+    <div class="main" data-role-id="main">
 
         <span id="clientselector" data-role="caplinx.client-selector">
-            <button onclick="(document.body.className.indexOf('collapsed') > -1) ? document.body.className = '' :  document.body.className = 'collapsed'; FrameManager.resize();">Collapse</button>
+            <button onclick="toggleCollapsed();">Collapse</button>
         </span>
 
-        <span>
+        <span id="client">
 
-            <span id="clientheader" data-role="caplinx.client-header">
-            </span>
+            <div id="clientheader" data-role="caplinx.client-header">
+            </div>
 
-            <span id="client">
+            <span id="clientbody">
 
                 <span id="menu" data-role="caplinx.client-menu">
-                    <button onclick="FrameManager.get('panel').show('info')">Info</button>
-                    <button onclick="FrameManager.get('panel').show('ticket')">Ticket</button>
-                    <button onclick="FrameManager.get('panel').show('blotter')">Blotter</button>
-                    <button onclick="FrameManager.get('panel').show('other')">Other</button>
+                    <button onclick="switchPanel('info')">Info</button>
+                    <button onclick="switchPanel('trade')">Trade</button>
+                    <button onclick="switchPanel('blotter')">Blotter</button>
+                    <button onclick="switchPanel('other')">Other</button>
                 </span>
 
-                <span id="stage" data-role="MultiFrame">
-                    <span id="info" data-role-id="info" data-role="caplinx.client-info"></span>
-                    <span id="trade" data-role-id="trade" data-role="SplitFrame">
+                <span id="stage" data-role-id="stage" data-role="MultiFrame">
+                    <span id="info" data-role-id="info" data-role="caplinx.client-info" data-role-options='{"listenToResize":true}'></span>
+                    <span id="trade" data-role-id="trade">
                         <span id="ticket" data-role-id="ticket" data-role="caplinx.ticket"></span>
-                        <span id="stuff" data-role-id="stuff" data-role="caplinx.stuff"></span>
+                        <span id="stuff" data-role-id="stuff" data-role="caplinx.stuff" data-role-options='{"listenToResize":true}'></span>
                     </span>
-                    <span id="blotter" data-role-id="blotter" data-role="caplinx.client-blotter"></span>
+                    <span id="blotter" data-role-id="blotter" data-role="caplinx.client-blotter" ></span>
                     <span id="other" data-role-id="other" data-role="caplinx.client-other"></span>
                 </span>
-
-                </span>
-
+            </span>
         </span>
 
     </div>

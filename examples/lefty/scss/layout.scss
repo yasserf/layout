@@ -2,11 +2,13 @@
   width: 100%;
   height: 5%;
   background-color: red;
-  min-height: 30px; }
+  min-height: 30px;
+}
 
 .main {
   width: 100%;
-  height: 95%; }
+  height: 95%;
+}
 
 #clientselector {
   transition: width 0.2s;
@@ -17,30 +19,41 @@
 }
 
 #client {
+  transition: width 0.2s;
   height: 100%;
   width: 85%;
   float: left;
 }
 
 #clientheader {
+  min-height: 30px;
+  height: 7%;
+  width: 100%;
+  background-color: grey;
+}
 
+#clientbody {
+  display: inline-block;
+  height: 93%;
+  width: 100%;
 }
 
 #menu {
   height: 100%;
   width: 10%;
-  background-color: grey;
-  float: left; }
+  background-color: rosybrown;
+  float: left;
+}
 
 #stage > span  {
   transition: width 0.2s;
   height: 100%;
-  width: 75%;
+  width: 90%;
   float: left;
 }
 
-.collapsed #stage > span {
-  width: 87%;
+.collapsed #client {
+  width: 97%;
 }
 
 .collapsed #clientselector {
@@ -49,7 +62,18 @@
 
 #ticket {
   background-color: orange;
+  float: left;
+  width: 75%;
+  height: 100%;
 }
+
+#stuff {
+  background-color: deeppink;
+  float: left;
+  width: 25%;
+  height: 100%;
+}
+//Colors
 
 #info {
   background-color: blue;
@@ -57,6 +81,10 @@
 
 #info {
   background-color: deeppink;
+}
+
+#blotter {
+  background-color: darkolivegreen;
 }
 
 #other {

@@ -1,4 +1,4 @@
-var FrameManager = require("./../../../dist/leftylayout");
+var FrameManager = require("./../../../js/FrameManager");
 var TestComponent = require("./TestComponent");
 
 function createComponent(aliasName) {

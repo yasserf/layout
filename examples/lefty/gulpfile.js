@@ -26,6 +26,7 @@ gulp.task('html', function() {
 
 // Watch Files For Changes
 gulp.task('watch', function() {
+    gulp.watch('./../../dist/**.js', ['scripts']);
     gulp.watch('js/**.js', ['scripts']);
     gulp.watch('index.html', ['html']);
     gulp.watch('scss/*.scss', ['sass']);
