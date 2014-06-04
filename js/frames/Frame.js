@@ -3,6 +3,7 @@ var listenToResize = require("../FrameResize");
 var Frame = function(elem, createComponent) {
     this._element = elem;
     this._options = JSON.parse(elem.getAttribute("data-role-options") || "{}");
+    this._dataRole = elem.getAttribute("data-role");
 
     this._width = null;
     this._height = null;
@@ -23,7 +24,10 @@ Frame.prototype.open = function() {
 
     this.shown = true;
 
-    this._component = this._createComponent();
+    this._component = this._createComponent(this._dataRole, this._options);
+    if(this._component.setFrame) {
+        this._component.setFrame(this);
+    }
     this._element.insertBefore(this._component.getElement(), this._element.firstChild);
 
     if(this._component.onOpen) {

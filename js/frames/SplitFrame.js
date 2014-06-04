@@ -24,7 +24,6 @@ module.exports = (function() {
             dataID = elem.getAttribute("data-role-id");
 
             frame =  require("./../ElementEnhancer")(elementsToEnhance[i], this._createComponent);
-            debugger
             frame.open();
             this._frames.push(frame);
 
